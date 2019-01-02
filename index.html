@@ -32,18 +32,6 @@
   </nav>
 
   <main>
-    <section class="section">
-      <div class="container">
-
-        <div class="row">
-          <div class="col-xs-12 col-sm-12">
-            <h1 class="section-heading">Gender in Academia</h1>
-            <div id="discipline-selector"></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
 
     <section class="section">
       <div class="container">
@@ -72,23 +60,65 @@
 
         <div class="row">
           <div class="col-xs-12 col-sm-4 text-center">
-            <p class="section-paragraph">Math</p>
+            <div class="row">
+              <p class="section-paragraph">Math</p>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 text-center" id="gender-balance-math" class="custom-chart"></div>
+            </div>
           </div>
           <div class="col-xs-12 col-sm-4 text-center">
-            <p class="section-paragraph">Reading</p>
+            <div class="row">
+              <p class="section-paragraph">Reading</p>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 text-center" id="gender-balance-reading" class="custom-chart"></div>
+            </div>
           </div>
           <div class="col-xs-12 col-sm-4 text-center">
-            <p class="section-paragraph">Writing</p>
+            <div class="row">
+              <p class="section-paragraph">Writing</p>
+            </div>
+            <div class="row">
+              <div class="col-xs-12 text-center" id="gender-balance-writing" class="custom-chart"></div>
+            </div>
           </div>
-        </div>
-
-        <div class="row">
-          <div class="col-xs-12 col-sm-4 text-center" id="gender-balance-math" class="custom-chart"></div>
-          <div class="col-xs-12 col-sm-4 text-center" id="gender-balance-reading" class="custom-chart"></div>
-          <div class="col-xs-12 col-sm-4 text-center" id="gender-balance-writing" class="custom-chart"></div>
         </div>
       </div>
     </section>
+    
+    
+    <section class="section">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12">
+            <h1 class="section-heading">Do certain ethnicities show higher levels of parental education?</h1>
+            <p class="section-paragraph">Select a level of education to comapre against the five ethnicities in this study:</p>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div id="parental_level_of_education-selector"></div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div id="race_ethnicity-graph"></div>
+          </div>
+          
+          <div class="col-xs-12 col-sm-12">
+            <h1 class="section-heading">However, does this show the true picture?</h1>
+            <p class="section-paragraph">Lets look at these as percentages of the total of each ethniity. Select a level of education on the legend to the right of the graph to compare across ethnicities.</p>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <div id="parental_level_of_education_by_Race-chart"></div>
+          </div>
+          <div class="col-xs-12 col-sm-6">
+            <p class="section-paragraph">We can see here that </p>
+          </div>
+          
+        </div>
+      </div>
+    </section>
+
+
+
 
 
   </main>
