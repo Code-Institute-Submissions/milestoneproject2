@@ -42,3 +42,7 @@
 .section-paragraph {
 	line-height: 1.2;
 }
+
+.div-fill {
+	background-color: rgba(255, 0, 0, 1)
+}
