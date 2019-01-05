@@ -13,6 +13,7 @@ function makeGraphs(error, studentData) {
     });
 
 
+    show_percent_of_each_gender(ndx);
     show_gender_balance(ndx);
     show_test_scores_by_gender(ndx);
     show_parental_level_of_education_selector(ndx);
@@ -35,14 +36,14 @@ function show_percent_of_each_gender(ndx) {
     function percentageThatAreEachGender(gender) {
         return genderDim.group().reduce(
             function(p, v) {
-                p.total ++;
+                p.total++;
                 if (v.gender === gender) {
                     p.count++;
                 }
                 return p;
             },
             function(p, v) {
-                p.total ++;
+                p.total++;
                 if (v.gender === gender) {
                     p.count--;
                 }
@@ -61,26 +62,27 @@ function show_percent_of_each_gender(ndx) {
     dc.numberDisplay("#female-number")
         .formatNumber(d3.format(".2%"))
         .valueAccessor(function(d) {
-            if (d.count == 0) {
+            if(d.value.total > 0) {
+                return (d.value.count / d.value.total) * 100
+            } else {
                 return 0;
             }
-            else {
-                return (d.count / d.total) * 100;
-            }
+            return d.value.percent * 100;
         })
         .group(percentageThatAreFemale);
+
 
     dc.numberDisplay("#male-number")
         .formatNumber(d3.format(".2%"))
         .valueAccessor(function(d) {
-            if (d.count == 0) {
+            if(d.value.total > 0) {
+                return (d.value.count / d.value.total) * 100
+            } else {
                 return 0;
             }
-            else {
-                return (d.count / d.total) * 100;
-            }
+            return d.value.percent * 100;
         })
-        .group(percentageThatAreMale);
+        .group(percentgeThatAreMale);
 }
 
 function show_gender_balance(ndx) {
