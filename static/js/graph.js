@@ -67,7 +67,7 @@ function show_percent_of_each_gender(ndx) {
             } else {
                 return 0;
             }
-            return d.value.percent * 100;
+            return d.value.percent;
         })
         .group(percentageThatAreFemale);
 
@@ -224,6 +224,7 @@ function show_percent_that_are_in_each_race(ndx) {
     dc.barChart("#parental_level_of_education_by_Race-chart")
         .width(350)
         .height(250)
+        .margins({ top: 10, right: 100, bottom: 30, left: 30 })
         .dimension(dim)
         .group(someHighSchoolByRace, "some high school")
         .stack(highSchoolProfByRace, "high school")
@@ -242,9 +243,8 @@ function show_percent_that_are_in_each_race(ndx) {
         })
         .x(d3.scale.ordinal())
         .xUnits(dc.units.ordinal)
-        .xAxisLabel("Race")
-        .legend(dc.legend().x(270).y(20).itemHeight(15).gap(5))
-        .margins({ top: 10, right: 100, bottom: 30, left: 30 });
+        .xAxisLabel("Race/Ethnicity")
+        .legend(dc.legend().x(270).y(20).itemHeight(15).gap(5));
 }
 
 
@@ -263,8 +263,8 @@ function show_math_score_to_reading_score_correlation(ndx) {
     var maxMath = mathDim.top(1)[0].math_score;
 
     dc.scatterPlot("#math_vs_reading_scores")
-        .width(600)
-        .height(400)
+        .width(400)
+        .height(250)
         .x(d3.scale.linear().domain([minMath, maxMath]))
         .brushOn(false)
         .symbolSize(8)
@@ -299,8 +299,8 @@ function show_math_score_to_writing_score_correlation(ndx) {
     var maxMath = mathDim.top(1)[0].math_score;
 
     dc.scatterPlot("#math_vs_writing_scores")
-        .width(600)
-        .height(400)
+        .width(400)
+        .height(250)
         .x(d3.scale.linear().domain([minMath, maxMath]))
         .brushOn(false)
         .symbolSize(8)
@@ -335,8 +335,8 @@ function show_reading_score_to_writing_score_correlation(ndx) {
     var maxReading = readingDim.top(1)[0].reading_score;
 
     dc.scatterPlot("#reading_vs_writing_scores")
-        .width(600)
-        .height(400)
+        .width(400)
+        .height(250)
         .x(d3.scale.linear().domain([minReading, maxReading]))
         .brushOn(false)
         .symbolSize(8)
@@ -400,7 +400,7 @@ function show_math_scores_by_test_prep(ndx) {
         })
         .elasticY(true)
         .xAxisLabel("Test Prep Course")
-        .yAxisLabel("Average Score")
+        .yAxisLabel("Average Math Score")
         .yAxis().ticks(10)
 }
 
@@ -447,7 +447,7 @@ function show_reading_scores_by_test_prep(ndx) {
         })
         .elasticY(true)
         .xAxisLabel("Test Prep Course")
-        .yAxisLabel("Average Score")
+        .yAxisLabel("Average Reading Score")
         .yAxis().ticks(10);
 }
 
@@ -495,6 +495,6 @@ function show_writing_scores_by_test_prep(ndx) {
         })
         .elasticY(true)
         .xAxisLabel("Test Prep Course")
-        .yAxisLabel("Average Score")
+        .yAxisLabel("Average Writing Score")
         .yAxis().ticks(10);
 }
