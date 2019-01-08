@@ -123,8 +123,8 @@ function show_test_scores_by_gender(ndx) {
     var writing_score_by_gender = genderDim.group().reduceSum(dc.pluck('writing_score'));
 
     dc.pieChart("#gender-balance-math")
-        .height(200)
-        .radius(90)
+        .height(150)
+        .radius(75)
         .transitionDuration(500)
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
@@ -132,8 +132,8 @@ function show_test_scores_by_gender(ndx) {
         .group(math_score_by_gender)
 
     dc.pieChart("#gender-balance-reading")
-        .height(200)
-        .radius(90)
+        .height(150)
+        .radius(75)
         .transitionDuration(500)
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
@@ -141,8 +141,8 @@ function show_test_scores_by_gender(ndx) {
         .group(reading_score_by_gender)
 
     dc.pieChart("#gender-balance-writing")
-        .height(200)
-        .radius(90)
+        .height(150)
+        .radius(75)
         .transitionDuration(500)
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
@@ -263,8 +263,8 @@ function show_math_score_to_reading_score_correlation(ndx) {
     var maxMath = mathDim.top(1)[0].math_score;
 
     dc.scatterPlot("#math_vs_reading_scores")
-        .width(400)
-        .height(250)
+        .width(450)
+        .height(300)
         .x(d3.scale.linear().domain([minMath, maxMath]))
         .brushOn(false)
         .symbolSize(8)
@@ -299,8 +299,8 @@ function show_math_score_to_writing_score_correlation(ndx) {
     var maxMath = mathDim.top(1)[0].math_score;
 
     dc.scatterPlot("#math_vs_writing_scores")
-        .width(400)
-        .height(250)
+        .width(450)
+        .height(300)
         .x(d3.scale.linear().domain([minMath, maxMath]))
         .brushOn(false)
         .symbolSize(8)
@@ -335,8 +335,8 @@ function show_reading_score_to_writing_score_correlation(ndx) {
     var maxReading = readingDim.top(1)[0].reading_score;
 
     dc.scatterPlot("#reading_vs_writing_scores")
-        .width(400)
-        .height(250)
+        .width(450)
+        .height(300)
         .x(d3.scale.linear().domain([minReading, maxReading]))
         .brushOn(false)
         .symbolSize(8)
