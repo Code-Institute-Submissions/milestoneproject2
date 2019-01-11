@@ -18,11 +18,17 @@
 }
 
 .section-paragraph {
-	font-size: 18px;
+	font-size: 14px;
 	padding: 10px 0;
 }
 
 span .fas .fa-arrow-circle-down {
 	font-size: 22px;
 	color: red;
+}
+
+@media (min-width: 767px) {
+	.section-paragraph {
+		font-size: 18px;
+	}
 }
