@@ -272,7 +272,7 @@ function show_math_score_to_reading_score_correlation(ndx) {
         .yAxisLabel("Reading Score")
         .xAxisLabel("Math Score")
         .title(function(d) {
-            return "This person received " + d.key[0] + " in Math and " + d.key[1] + " in Reading.";
+            return "This " + d.key[2] + " received " + d.key[0] + " in Math and " + d.key[1] + " in Reading.";
         })
         .colorAccessor(function(d) {
             return d.key[2];
@@ -308,7 +308,7 @@ function show_math_score_to_writing_score_correlation(ndx) {
         .yAxisLabel("Writing Score")
         .xAxisLabel("Math Score")
         .title(function(d) {
-            return "This person received " + d.key[0] + " in Math and " + d.key[1] + " in Writing.";
+            return "This " + d.key[2] + " received " + d.key[0] + " in Math and " + d.key[1] + " in Writing.";
         })
         .colorAccessor(function(d) {
             return d.key[2];
@@ -344,7 +344,7 @@ function show_reading_score_to_writing_score_correlation(ndx) {
         .yAxisLabel("Writing Score")
         .xAxisLabel("Reading Score")
         .title(function(d) {
-            return "This person received " + d.key[0] + " in Reading and " + d.key[1] + " in Writing.";
+            return "This " + d.key[2] + " received " + d.key[0] + " in Reading and " + d.key[1] + " in Writing.";
         })
         .colorAccessor(function(d) {
             return d.key[2];
