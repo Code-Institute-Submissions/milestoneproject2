@@ -6,13 +6,14 @@ queue()
 function makeGraphs(error, studentData) {
     var ndx = crossfilter(studentData);
 
+    /*To change these strings to integer values*/
     studentData.forEach(function(d) {
         d.math_score = parseInt(d.math_score);
         d.reading_score = parseInt(d["reading_score"]);
         d.writing_score = parseInt(d["writing_score"]);
     });
 
-
+    /*Calling each chart function*/
     show_percent_of_each_gender(ndx);
     show_gender_balance(ndx);
     show_test_scores_by_gender(ndx);
@@ -30,11 +31,11 @@ function makeGraphs(error, studentData) {
 }
 
 
-
+/*Number displays*/
 function show_percent_of_each_gender(ndx) {
 
     function percentageThatAreEachGender(gender) {
-        return genderDim.group().reduce(
+        return genderDim.groupAll().reduce(
             function(p, v) {
                 p.total++;
                 if (v.gender === gender) {
@@ -60,31 +61,32 @@ function show_percent_of_each_gender(ndx) {
     var percentgeThatAreMale = percentageThatAreEachGender("male");
 
     dc.numberDisplay("#female-number")
-        .formatNumber(d3.format(".2%"))
+        .group(percentageThatAreFemale)    
+        .formatNumber(d3.format(".1%"))
         .valueAccessor(function(d) {
-            if(d.value.total > 0) {
-                return (d.value.count / d.value.total) * 100
+            if(d.total > 0) {
+                return (d.count / d.total)
             } else {
                 return 0;
             }
-            return d.value.percent;
+            return d.percent;
         })
-        .group(percentageThatAreFemale);
 
 
     dc.numberDisplay("#male-number")
-        .formatNumber(d3.format(".2%"))
+        .formatNumber(d3.format(".1%"))
         .valueAccessor(function(d) {
-            if(d.value.total > 0) {
-                return (d.value.count / d.value.total) * 100
+            if(d.total > 0) {
+                return (d.count / d.total)
             } else {
                 return 0;
             }
-            return d.value.percent * 100;
+            return d.percent * 100;
         })
         .group(percentgeThatAreMale);
 }
 
+/*Gender balance bar chart*/
 function show_gender_balance(ndx) {
     var genderColors = d3.scale.ordinal()
         .domain(["Female", "Male"])
@@ -110,11 +112,11 @@ function show_gender_balance(ndx) {
         .yAxis().ticks(20);
 }
 
-
+/*Subject scores: gender split pie charts*/
 function show_test_scores_by_gender(ndx) {
     var genderColors = d3.scale.ordinal()
         .domain(["Female", "Male"])
-        .range(["pink", "blue"]);
+        .range(["blue", "pink"]);
     var genderDim = ndx.dimension(function(d) {
         return [d.gender];
     });
@@ -151,7 +153,7 @@ function show_test_scores_by_gender(ndx) {
 
 }
 
-
+/*Selector for parental level of education*/
 function show_parental_level_of_education_selector(ndx) {
     var parentDim = ndx.dimension(dc.pluck("parental_level_of_education"));
     var parentSelect = parentDim.group();
@@ -161,7 +163,7 @@ function show_parental_level_of_education_selector(ndx) {
         .group(parentSelect);
 }
 
-
+/*Race/Ethnicity Bar chart*/
 function show_race_ethnicity_balance(ndx) {
     var raceColors = d3.scale.ordinal()
         .domain(["A", "B", "C", "D", "E"])
@@ -187,7 +189,7 @@ function show_race_ethnicity_balance(ndx) {
         .yAxis().ticks(5);
 }
 
-
+/*Race/Ethnicity vs. parental level of education Stacked Bar chart*/
 function show_percent_that_are_in_each_race(ndx) {
 
     function parental_level_of_education_by_Race(dimension, parental_level_of_education) {
@@ -247,7 +249,7 @@ function show_percent_that_are_in_each_race(ndx) {
         .legend(dc.legend().x(270).y(20).itemHeight(15).gap(5));
 }
 
-
+/*Scatter plot for math vs reading scores*/
 function show_math_score_to_reading_score_correlation(ndx) {
     var genderColors = d3.scale.ordinal()
         .domain(["Female", "Male"])
@@ -283,7 +285,7 @@ function show_math_score_to_reading_score_correlation(ndx) {
         .margins({ top: 10, right: 50, bottom: 75, left: 75 });
 }
 
-
+/*Scatter plot for math vs writing scores*/
 function show_math_score_to_writing_score_correlation(ndx) {
     var genderColors = d3.scale.ordinal()
         .domain(["Female", "Male"])
@@ -319,7 +321,7 @@ function show_math_score_to_writing_score_correlation(ndx) {
         .margins({ top: 10, right: 50, bottom: 75, left: 75 });
 }
 
-
+/*Scatter plot for reading vs math scores*/
 function show_reading_score_to_writing_score_correlation(ndx) {
     var genderColors = d3.scale.ordinal()
         .domain(["Female", "Male"])
@@ -355,7 +357,7 @@ function show_reading_score_to_writing_score_correlation(ndx) {
         .margins({ top: 10, right: 50, bottom: 75, left: 75 });
 }
 
-
+/*Line Graph for math scores by test prep*/
 function show_math_scores_by_test_prep(ndx) {
     var testDim = ndx.dimension(dc.pluck("test_preparation_course"));
     var math_by_test_prepGroup = testDim.group().reduce(
@@ -365,7 +367,6 @@ function show_math_scores_by_test_prep(ndx) {
             p.average = p.total / p.count;
             return p;
         },
-        //Remove the fact
         function(p, v) {
             p.count--;
             if (p.count == 0) {
@@ -378,8 +379,6 @@ function show_math_scores_by_test_prep(ndx) {
             }
             return p;
         },
-
-        //Initialise the Reducer
         function() {
             return { count: 0, total: 0, average: 0 };
         }
@@ -404,6 +403,7 @@ function show_math_scores_by_test_prep(ndx) {
         .yAxis().ticks(10)
 }
 
+/*Line Graph for reading scores by test prep*/
 function show_reading_scores_by_test_prep(ndx) {
     var testDim = ndx.dimension(dc.pluck("test_preparation_course"));
     var reading_by_test_prepGroup = testDim.group().reduce(
@@ -413,7 +413,6 @@ function show_reading_scores_by_test_prep(ndx) {
             p.average = p.total / p.count;
             return p;
         },
-        //Remove the fact
         function(p, v) {
             p.count--;
             if (p.count == 0) {
@@ -426,8 +425,6 @@ function show_reading_scores_by_test_prep(ndx) {
             }
             return p;
         },
-
-        //Initialise the Reducer
         function() {
             return { count: 0, total: 0, average: 0 };
         }
@@ -451,7 +448,7 @@ function show_reading_scores_by_test_prep(ndx) {
         .yAxis().ticks(10);
 }
 
-
+/*Line Graph for writing scores by test prep*/
 function show_writing_scores_by_test_prep(ndx) {
     var testDim = ndx.dimension(dc.pluck("test_preparation_course"));
     var writing_by_test_prepGroup = testDim.group().reduce(
@@ -461,7 +458,6 @@ function show_writing_scores_by_test_prep(ndx) {
             p.average = p.total / p.count;
             return p;
         },
-        //Remove the fact
         function(p, v) {
             p.count--;
             if (p.count == 0) {
@@ -474,8 +470,6 @@ function show_writing_scores_by_test_prep(ndx) {
             }
             return p;
         },
-
-        //Initialise the Reducer
         function() {
             return { count: 0, total: 0, average: 0 };
         }

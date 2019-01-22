@@ -1,8 +1,10 @@
+/*Navbar*/
 .navbar-default {
 	background-image: none;
 	margin-bottom: 0;
 }
 
+/*Sections*/
 .section-heading {
 	margin-bottom: 25px;
 }
@@ -22,11 +24,19 @@
 	padding: 10px 0;
 }
 
+/*Specific stylings*/
 span .fas .fa-arrow-circle-down {
 	font-size: 22px;
 	color: red;
 }
 
+/*Links*/
+a{
+	text-decoration: none;
+}
+
+
+/*media queries*/
 @media (min-width: 767px) {
 	.section-paragraph {
 		font-size: 18px;
