@@ -33,7 +33,7 @@ This website has two primary parties involved –  Those who conducted the resea
 * We want various groups of data to be colour coded to ease the cross examination of data.
 * We want to have a feature on this website to allow us to select various groups of data which would change all graphs on the page so that the group we want to study in detail is isolated.
  
-# Need to insert wireframe
+# Wireframe
 Please see the [*Wireframes*](https://github.com/MarkSheehan72/milestoneproject2/tree/master/wireframes) directory in the project for wireframes of each page of the project. 
 
 # Features 
@@ -54,9 +54,13 @@ Please see the [*Wireframes*](https://github.com/MarkSheehan72/milestoneproject2
 
 * Line graphs - show the difference between the average score achieved by those who completed the test preparation course and those who did not.
 
+* Reset Button - resets all graphs on the page.
+
 **Features Left to Implement** 
 
 * Adding nav tabs to the navbar on the top of the page, which will allow users to jump to a specific section.
+
+* Adding function to the reset button which also fully resets the number displays.
 
 # Technologies Used 
 
@@ -84,102 +88,85 @@ The project uses [FontAwesome](https://use.fontawesome.com/releases/v5.6.3/css/a
 
 The project uses [DC](static/js/dc.min.js), [D3](static/js/d3.min.js) and [Crossfilter](static/js/crossfilter.min.js) to add interactive charts (including number displays and a selector) to the site.
 
-# CONTINUE HERE!!
-
 # Testing 
 
 ### Scenarios: 
 
-##### Monkees User Story: 
+##### Researchers User Story: 
 
-*Promoting music – Intro, audio and video clips:* 
+*Display data in visual format:* 
 
-* Go to the "Home" page 
+* Clear from the dashboard that this has been achieved.
 
-* See if the intro text and video appear. 
+* Also, Jasmine test for seeing if the charts loads passes. 
 
-* Click on the video and see if it plays (also see if audio from video is also present). 
 
-* Go to the “Catalogue” page. 
 
-* See if the audio clips appear for each of the four songs. 
+*Aesthetically pleasing graphs:* 
 
-* Click on each audio clip to ensure that they work and that audio can be heard. 
+* Charts have either defined or predetermined colours, which add the the aesthetic of the site.
 
- 
-
-*Giving information on the band:* 
-
-* Go to the “About" page 
-
-* See if each of the four sections appear. 
-
-* Click on each band member’s picture to see if the corresponding Wikipedia link opens in a new tab. 
+* Again, Jasmine test for seeing if charts load passes. 
 
  
 
-*Giving information on the band’s ability to perform at functions (weddings/Christmas parties):* 
+*Inference on graphs:* 
 
-* Go to the “Functions" page 
+* These can be seen with each graph/set of graphs in the dashboard.
 
-* See if each of the two sections (weddings and Christmas parties) appear. 
-
-* Hover over the download icons in each section to ensure that the animation occurs. 
-
-* Click on each icon to ensure that the corresponding pdfs open in new tabs. 
+* As all content loads (as per Jasmine test), these are garaunteed to load. 
 
  
 
-*Booking the band for functions:* 
+*Data interacts with each other:* 
 
-* Go to each page to see if the contact icon appears in the footer of each page. 
+* Go to various graphs and the selector.
 
-* Hover over the icon on each page to ensure the animation works. 
+* Click on an element of these graphs/selector.
 
-* Click the icon on each page to see if it takes you to the “Contact Us” page. 
+* See if the other graphs change to only display the data set seleted (e.g. females).
 
-* Go to the “Functions" page 
+* For the specific example in the user story (math/reading correlation for females), we can see that by selecting the female bar in the gender bar chart, only the pink (female) dots are left on the statter graph.
 
-* See if the “Book Us” button appears at the bottom of the section. 
-
-* Hover over the button to ensure the animation works. 
-
-* Click on the button to see if it takes you to the “Contact Us” page. 
-
-* Hover over the download icons in each section to ensure that the animation occurs. 
-
-* Click on each icon to ensure that the corresponding pdfs open in new tabs. 
-
-* Go to “Contact Us”. 
-
-* Press “Send Request” button with fields missing to see if an error message pops up. 
+* There are certains elements of graphs which do work in line with this interactivity (e.g. clicking one of the elements of the <strong>legend</strong> of the stacked bar chart), but all elements have a graph/chart/selector which allow us to get the specific intersection of data dimensions that one may want. 
 
  
 
-##### Established Fan User Story: 
+##### Users User Story: 
 
-*Accessing social media:* 
+*Understandable visualisations/Additional commentary:* 
 
-* Go to each page to see if the social media icons appear in the footer of each page. 
+* All graphs have inferences to add additional explanations.
 
-* Hover over each on each page to ensure the animation is working. 
+* Jasmine test shows these will display. 
 
-* Click on each icon to see if the corresponding social media site opens in a new tab. 
 
-All other scenarios for this user group have been tested through “The Monkees User Story” scenarios (see “UX” section for more details). 
+*Colour coded data:* 
 
- 
+* See "Researchers" point on "Aesthetically pleasing graphs".
 
-##### New Users User Story: 
 
-All scenarios for this user group have been tested through “The Monkees User Story” and “Established Fans User Story scenarios (see “UX” section for more details). 
+*Selecting specific groups to isolate data to study:* 
 
+* See "Researchers" point on "Data interacts with each other".
+
+
+### Jasmine Testing:
+
+Jasmine was used to test 2 things in particular for this project:
+
+* That the data loaded for the project.
+
+* That the content of the page also loaded.
  
 
 ### Responsiveness of site: 
 
 To aid in creating a responsive site, I used Bootstrap’s Grid System. Through the creating process of this dashboard, I would check the various break points to see if the column sizes worked with the design on various device screen sizes, using Chrome Dev Tools, my own iPhone 8 and an iPad Pro (10.5).
 
+
+**Navbar:** The Grid system aided me here in placing the content where I wanted, in particular placing the reset button at the right-hand side of the navbar.
+After adding the reset button, I needed to test various breakpoints to see which combination of col sixes and offset sizes worked best.
 
 **Sections:** The Grid System aided me greatly in arranging the sections for each page. 
 As I was creating each section, and the graphs and text within each, I experimented with various column sizes for each breakpoint. 
@@ -213,6 +200,9 @@ I created a repository on GitHub, linking my project on Cloud9 to it. I committe
 * The arrow glyphicon was sourced from: https://fontawesome.com/icons/arrow-circle-down?style=solid 
 
 * Aid for the number display function was obtained from my mentor (Mossa Hassan). 
+
+* Aid for the second Jasmine Test was obtained from https://github.com/Migacz85/data-visualisation. 
+
 
 # Media 
 
