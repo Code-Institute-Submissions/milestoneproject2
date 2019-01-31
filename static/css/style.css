@@ -1,10 +1,12 @@
 /*Navbar*/
+
 .navbar-default {
 	background-image: none;
 	margin-bottom: 0;
 }
 
 /*Sections*/
+
 .section-heading {
 	margin-bottom: 25px;
 }
@@ -25,18 +27,28 @@
 }
 
 /*Specific stylings*/
+
 span .fas .fa-arrow-circle-down {
 	font-size: 22px;
 	color: red;
 }
 
 /*Links*/
-a{
+
+
+a.btn{
+	background-color: red;
+	margin-top: 5px;
+	text-align: center;
 	text-decoration: none;
 }
 
+a {
+	text-decoration: none;
+}
 
 /*media queries*/
+
 @media (min-width: 767px) {
 	.section-paragraph {
 		font-size: 18px;

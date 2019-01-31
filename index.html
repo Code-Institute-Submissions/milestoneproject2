@@ -18,6 +18,7 @@
   <script type="text/javascript" src="static/js/dc.min.js"></script>
   <script type="text/javascript" src="static/js/queue.min.js"></script>
   <script type="text/javascript" src="static/js/graph.js"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 
 </head>
 
@@ -26,8 +27,13 @@
   <!-- Navbar -->
   <nav class="navbar navbar-default">
     <div class="container-fluid">
-      <div class="navbar-header">
-        <a class="navbar-brand" href="#">Educational factors - a sample...</a>
+      <div class="row">
+        <div class="navbar-header col-xs-8 col-sm-6 col-md-6">
+          <a class="navbar-brand" href="#">Educational factors - a sample...</a>
+        </div>
+        <div class="col-xs-2 col-sm-2 col-md-1 col-xs-offset-2 col-sm-offset-4 col-md-offset-5">
+          <a href="javascript:dc.filterAll(); dc.renderAll();" class="btn">Reset All</a>
+        </div>
       </div>
     </div>
   </nav>
@@ -52,7 +58,7 @@
       </div>
     </section>
 
-    <!-- Gender split result pie charts -->    
+    <!-- Gender split result pie charts -->
     <section class="section">
       <div class="container">
 
@@ -88,9 +94,8 @@
             </div>
           </div>
           <div class="col-xs-12 col-sm-12">
-            <p class="section-paragraph">We can see here that, although there is a sightly higher percentage of females in this study, 
-            females clearly perform better in reading and writing than males. However, we do see that males outperform females in maths (although this is marginal on the chart, when 
-            considering the fact that there are slightly more females in the study, it is clear that males are outperforming females in this subject).</h2>
+            <p class="section-paragraph">We can see here that, although there is a sightly higher percentage of females in this study, females clearly perform better in reading and writing than males. However, we do see that males outperform females in maths (although this is marginal
+              on the chart, when considering the fact that there are slightly more females in the study, it is clear that males are outperforming females in this subject).</h2>
           </div>
         </div>
       </div>
@@ -105,12 +110,12 @@
             <h1 class="section-heading">Do certain ethnicities show higher levels of parental education?</h1>
             <p class="section-paragraph">Select a level of education to comapre against the five ethnicities in this study:</p>
             <span style="font-size: 22px; color: red;"><i class="fas fa-arrow-circle-down"></i></span>
-            
+
           </div>
           <div class="col-xs-12 col-sm-6">
             <div id="parental_level_of_education-selector"></div>
-            <p class="section-paragraph col-xs-12">From selecting the various degree levels, it appears that Group C has the best educated parents in general (apart from Group D, who 
-            have more parents with a masters degree), and Group A and E have the lowest numbers of educated parents across the degree levels.</p>
+            <p class="section-paragraph col-xs-12">From selecting the various degree levels, it appears that Group C has the best educated parents in general (apart from Group D, who have more parents with a masters degree), and Group A and E have the lowest numbers of educated parents across
+              the degree levels.</p>
           </div>
           <div class="col-xs-12 col-sm-6">
             <div id="race_ethnicity-graph"></div>
@@ -124,11 +129,10 @@
             <div id="parental_level_of_education_by_Race-chart"></div>
           </div>
           <div class="col-xs-12 col-sm-6">
-            <p class="section-paragraph">We can see here that, through loking at the proportion of each ethnicity in relation to their parent's level of education that
-            group A has the highest proportion in lower levels of education of education (with almost 70% either only having some high school, high school or some college),
-            whereas over half of groups C and E have higher levels of education (i.e. associate degree, bachelor degree or masters degree). It is particularaly interesting 
-            to see Group E in this light, as although in the previous graph we thought that Group E were lower in relation to parental level of education, we see that this 
-            was skewed due to the low numbers in this group. However, when looking at the percentages <strong>within the group</strong>, they are among the most highly educated.</p>
+            <p class="section-paragraph">We can see here that, through loking at the proportion of each ethnicity in relation to their parent's level of education that group A has the highest proportion in lower levels of education of education (with almost 70% either only having
+              some high school, high school or some college), whereas over half of groups C and E have higher levels of education (i.e. associate degree, bachelor degree or masters degree). It is particularaly interesting to see Group E in this light,
+              as although in the previous graph we thought that Group E were lower in relation to parental level of education, we see that this was skewed due to the low numbers in this group. However, when looking at the percentages <strong>within the group</strong>,
+              they are among the most highly educated.</p>
           </div>
 
         </div>
@@ -147,7 +151,7 @@
         </div>
 
         <div class="row">
-          <div class="col-xs-12 visible-xs text-center">
+          <div class="col-xs-12 visible-xs text-center" id="hidden-p">
             <p class="section-paragraph">To view these graphs fully, please turn your device to landscape.</p>
           </div>
           <div class="col-xs-12 col-md-6 text-center" id="math_vs_reading_scores" class="custom-chart"></div>
@@ -186,9 +190,9 @@
 
       </div>
     </section>
-    
+
     <footer>
-      <div class"row">
+      <div class "row">
         <div class="col-xs-12">
           <p class="section-paragraph text-center">Data sourced from <a href="https://www.kaggle.com/spscientist/students-performance-in-exams" target="_blank">Kaggle</a>.</p>
         </div>
