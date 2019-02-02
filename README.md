@@ -183,7 +183,7 @@ As the graphs are not responsive, this was necessary to see which layout suited 
 **Graphs/Charts:** 
 As the charts created by using the DC library are not responsive, I tested various dimensions for each chart's width, height and radius to see which would work best for all screen sizes. 
 
-The only charts which did not work well were the scatter plots, as there are quite a lot of data points in this sample set. As such, I added a hidden section (see Lines 150 - 152 of index.html) visible for xs screen sizes only which would advise users to rotate their devices to landscape to be able to see the entire graph on their screens (as shrinking the graph to fit mobile devices made the points too undistinguishable.
+The only charts which did not work well were the scatter plots, as there are quite a lot of data points in this sample set. As such, I added a hidden section (see Lines 153 - 155 of index.html) visible for xs screen sizes only which would advise users to rotate their devices to landscape to be able to see the entire graph on their screens (as shrinking the graph to fit mobile devices made the points too undistinguishable.
 
 
 
