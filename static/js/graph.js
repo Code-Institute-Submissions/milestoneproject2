@@ -2,9 +2,12 @@ queue()
     .defer(d3.csv, "data/StudentsPerformance.csv")
     .await(makeGraphs);
 
+sd = [];
 
 function makeGraphs(error, studentData) {
     var ndx = crossfilter(studentData);
+
+    sd = studentData;
 
     /*To change these strings to integer values*/
     studentData.forEach(function(d) {
@@ -30,6 +33,10 @@ function makeGraphs(error, studentData) {
     dc.renderAll();
 }
 
+/*Reset function which resets data when the button is pushed*/
+function reset() {
+    makeGraphs(null, sd);
+}
 
 /*Number displays*/
 function show_percent_of_each_gender(ndx) {
@@ -98,7 +105,7 @@ function show_gender_balance(ndx) {
 
     dc.barChart("#gender-balance")
         .width(350)
-        .height(250)
+        .height(350)
         .margins({ top: 10, right: 50, bottom: 30, left: 50 })
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
@@ -109,7 +116,7 @@ function show_gender_balance(ndx) {
         .xUnits(dc.units.ordinal)
         .elasticY(true)
         .xAxisLabel("Gender")
-        .yAxis().ticks(20);
+        .yAxis().ticks(10);
 }
 
 /*Subject scores: gender split pie charts*/
@@ -125,8 +132,8 @@ function show_test_scores_by_gender(ndx) {
     var writing_score_by_gender = genderDim.group().reduceSum(dc.pluck('writing_score'));
 
     dc.pieChart("#gender-balance-math")
-        .height(150)
-        .radius(75)
+        .height(200)
+        .radius(100)
         .transitionDuration(500)
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
@@ -134,8 +141,8 @@ function show_test_scores_by_gender(ndx) {
         .group(math_score_by_gender)
 
     dc.pieChart("#gender-balance-reading")
-        .height(150)
-        .radius(75)
+        .height(200)
+        .radius(100)
         .transitionDuration(500)
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
@@ -143,8 +150,8 @@ function show_test_scores_by_gender(ndx) {
         .group(reading_score_by_gender)
 
     dc.pieChart("#gender-balance-writing")
-        .height(150)
-        .radius(75)
+        .height(200)
+        .radius(100)
         .transitionDuration(500)
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
@@ -175,7 +182,7 @@ function show_race_ethnicity_balance(ndx) {
 
     dc.barChart("#race_ethnicity-graph")
         .width(350)
-        .height(250)
+        .height(300)
         .margins({ top: 10, right: 50, bottom: 30, left: 50 })
         .colorAccessor(function(d, i) { return i; })
         .colors(raceColors)
@@ -225,7 +232,7 @@ function show_percent_that_are_in_each_race(ndx) {
 
     dc.barChart("#parental_level_of_education_by_Race-chart")
         .width(350)
-        .height(250)
+        .height(300)
         .margins({ top: 10, right: 100, bottom: 30, left: 30 })
         .dimension(dim)
         .group(someHighSchoolByRace, "some high school")
@@ -266,7 +273,7 @@ function show_math_score_to_reading_score_correlation(ndx) {
 
     dc.scatterPlot("#math_vs_reading_scores")
         .width(450)
-        .height(300)
+        .height(350)
         .x(d3.scale.linear().domain([minMath, maxMath]))
         .brushOn(false)
         .symbolSize(8)
@@ -302,7 +309,7 @@ function show_math_score_to_writing_score_correlation(ndx) {
 
     dc.scatterPlot("#math_vs_writing_scores")
         .width(450)
-        .height(300)
+        .height(350)
         .x(d3.scale.linear().domain([minMath, maxMath]))
         .brushOn(false)
         .symbolSize(8)
@@ -338,7 +345,7 @@ function show_reading_score_to_writing_score_correlation(ndx) {
 
     dc.scatterPlot("#reading_vs_writing_scores")
         .width(450)
-        .height(300)
+        .height(350)
         .x(d3.scale.linear().domain([minReading, maxReading]))
         .brushOn(false)
         .symbolSize(8)

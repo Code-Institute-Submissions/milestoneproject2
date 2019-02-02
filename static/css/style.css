@@ -37,26 +37,22 @@ span .fas .fa-arrow-circle-down {
 	color: red;
 }
 
-/*Links*/
+/*Button*/
 
 
-a.btn{
-	background-color: red;
-	margin-top: 5px;
-	text-align: center;
-	text-decoration: none;
-	color: #fafafa;
+button.btn.btn-danger.navbar-btn {
 	transition: all 0.35s ease-in-out;
     -moz-transition: all 0.35s ease-in-out;
     -webkit-transition: all 0.35s ease-in-out;
     -o-transition: all .5s ease-in-out;
 }
 
-a.btn:hover{
-	background-color: #fafafa;
-	color: red;
+button.btn.btn-danger.navbar-btn:hover {
+    border-color: #ffffff;
 	
 }
+
+/*Links*/
 
 a {
 	text-decoration: none;

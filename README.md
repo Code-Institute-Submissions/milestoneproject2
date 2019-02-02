@@ -1,4 +1,4 @@
-# Educational factors - a sample... 
+# Factors which affect education 
 
 Deployed website: https://marksheehan72.github.io/milestoneproject2/
 
@@ -12,7 +12,7 @@ Deployed website: https://marksheehan72.github.io/milestoneproject2/
 >
 >Visualise your data using D3.js and dc.js
 
-As such, I set about creating a single-page dashboard, using a dataset I obtained from https://www.kaggle.com/spscientist/students-performance-in-exams, which would visualise the data contained within in an aesthetically pleasing and easily digestible manner for those viewing it.
+As such, I set about creating a single-page dashboard, using a dataset I obtained from [Kaggle](https://www.kaggle.com/spscientist/students-performance-in-exams), which would visualise the data contained within in an aesthetically pleasing and easily digestible manner for those viewing it.
 
 This included laying out the various pieces of information in different sections, so that users could easily locate the statistics which are useful to them, adding colour (e.g. gender colours) to aid the aesthetic, and adding inference commentary to aid the user in understanding what the graphs are telling us.
  
@@ -60,7 +60,6 @@ Please see the [*Wireframes*](https://github.com/MarkSheehan72/milestoneproject2
 
 * Adding nav tabs to the navbar on the top of the page, which will allow users to jump to a specific section.
 
-* Adding function to the reset button which also fully resets the number displays.
 
 # Technologies Used 
 
@@ -153,12 +152,14 @@ The project uses [DC](static/js/dc.min.js), [D3](static/js/d3.min.js) and [Cross
 
 ### Jasmine Testing:
 
-Jasmine was used to test 2 things in particular for this project:
+Jasmine was used to test 3 things in particular for this project:
 
 * That the data loaded for the project.
 
 * That the content of the page also loaded.
- 
+
+* That a specific example of a graph (i.e. the gender bar chart) loaded. 
+
 
 ### Responsiveness of site: 
 
@@ -174,17 +175,33 @@ As the graphs are not responsive, this was necessary to see which layout suited 
 
 **Section Paragraph Text:** I also used a media query for the font size of the section paragraph text, as I felt that the original size (18px) was too big for mobile devices.
 
-@media (min-width: 767px) {
+`@media (min-width: 767px) {
 	.section-paragraph {
 		font-size: 18px;
 	}
-}
+}`
 
 **Graphs/Charts:** 
 As the charts created by using the DC library are not responsive, I tested various dimensions for each chart's width, height and radius to see which would work best for all screen sizes. 
 
 The only charts which did not work well were the scatter plots, as there are quite a lot of data points in this sample set. As such, I added a hidden section (see Lines 153 - 155 of index.html) visible for xs screen sizes only which would advise users to rotate their devices to landscape to be able to see the entire graph on their screens (as shrinking the graph to fit mobile devices made the points too undistinguishable.
 
+### Debugging:
+
+**Reset Button:** Initially, the reset button reset all of the charts, but not the number displays. As such, I needed to create a custom function which would recall the makeGraphs function. 
+As such, I needed to make studentData a global object, by inserting the following in the makeGraphs function:
+
+`sd = studentData;`
+
+I then created the reset function, as follows:
+
+`function reset() {
+    makeGraphs(null, sd);
+}`
+
+and linked it inline to the button element in index.html using the onClick function:
+
+`<button class="btn btn-danger navbar-btn" onClick="reset();">Reset All</button>`
 
 
 # Deployment 
@@ -197,16 +214,16 @@ I created a repository on GitHub, linking my project on Cloud9 to it. I committe
 
 * The basic structure for the graph.js file and some of the CSS stylings (which I felt worked well with the dashboard I had created, but with slight alterations) were obtained from the dashboard project in the Interactive Frontend Module.
 
-* The arrow glyphicon was sourced from: https://fontawesome.com/icons/arrow-circle-down?style=solid 
+* The arrow glyphicon was sourced from [here](https://fontawesome.com/icons/arrow-circle-down?style=solid). 
 
 * Aid for the number display function was obtained from my mentor (Mossa Hassan). 
 
-* Aid for the second Jasmine Test was obtained from https://github.com/Migacz85/data-visualisation. 
+* Aid for the second and third Jasmine Tests were obtained from [here](https://github.com/Migacz85/data-visualisation). 
 
 
 # Media 
 
-* The data obtained for this project was obtained from https://www.kaggle.com/spscientist/students-performance-in-exams
+* The data obtained for this project was obtained from [Kaggle](https://www.kaggle.com/spscientist/students-performance-in-exams).
 
 # Acknowledgements 
 
