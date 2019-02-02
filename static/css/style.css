@@ -9,6 +9,22 @@
 		font-size: 14px;
 }
 
+
+/*Reset button*/
+
+button.btn.btn-danger.navbar-btn {
+	transition: all 0.35s ease-in-out;
+    -moz-transition: all 0.35s ease-in-out;
+    -webkit-transition: all 0.35s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+}
+
+button.btn.btn-danger.navbar-btn:hover {
+    border-color: #ffffff;
+	
+}
+
+
 /*Sections*/
 
 .section-heading {
@@ -27,36 +43,24 @@
 
 .section-paragraph {
 	font-size: 14px;
-	padding: 10px 0;
+	padding: 15px 0 10px;
 }
 
-/*Specific stylings*/
+
+/*FontAwesome Arrow Glyphicon*/
 
 span .fas .fa-arrow-circle-down {
 	font-size: 22px;
 	color: red;
 }
 
-/*Button*/
-
-
-button.btn.btn-danger.navbar-btn {
-	transition: all 0.35s ease-in-out;
-    -moz-transition: all 0.35s ease-in-out;
-    -webkit-transition: all 0.35s ease-in-out;
-    -o-transition: all .5s ease-in-out;
-}
-
-button.btn.btn-danger.navbar-btn:hover {
-    border-color: #ffffff;
-	
-}
 
 /*Links*/
 
 a {
 	text-decoration: none;
 }
+
 
 /*media queries*/
 
