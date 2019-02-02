@@ -72,25 +72,25 @@ function show_percent_of_each_gender(ndx) {
         .formatNumber(d3.format(".1%"))
         .valueAccessor(function(d) {
             if(d.total > 0) {
-                return (d.count / d.total)
+                return (d.count / d.total);
             } else {
                 return 0;
             }
             return d.percent;
-        })
+        });
 
 
     dc.numberDisplay("#male-number")
+        .group(percentgeThatAreMale)
         .formatNumber(d3.format(".1%"))
         .valueAccessor(function(d) {
             if(d.total > 0) {
-                return (d.count / d.total)
+                return (d.count / d.total);
             } else {
                 return 0;
             }
             return d.percent * 100;
-        })
-        .group(percentgeThatAreMale);
+        });
 }
 
 /*Gender balance bar chart*/
@@ -138,7 +138,7 @@ function show_test_scores_by_gender(ndx) {
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
         .dimension(genderDim)
-        .group(math_score_by_gender)
+        .group(math_score_by_gender);
 
     dc.pieChart("#gender-balance-reading")
         .height(200)
@@ -147,7 +147,7 @@ function show_test_scores_by_gender(ndx) {
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
         .dimension(genderDim)
-        .group(reading_score_by_gender)
+        .group(reading_score_by_gender);
 
     dc.pieChart("#gender-balance-writing")
         .height(200)
@@ -156,7 +156,7 @@ function show_test_scores_by_gender(ndx) {
         .colorAccessor(function(d) { return d.key[0]; })
         .colors(genderColors)
         .dimension(genderDim)
-        .group(writing_score_by_gender)
+        .group(writing_score_by_gender);
 
 }
 
@@ -205,18 +205,18 @@ function show_percent_that_are_in_each_race(ndx) {
                 p.total++;
                 if (v.parental_level_of_education === parental_level_of_education) {
                     p.match++;
-                };
+                }
                 return p;
             },
             function(p, v) {
                 p.total--;
                 if (v.parental_level_of_education === parental_level_of_education) {
                     p.match--;
-                };
+                }
                 return p;
             },
             function() {
-                return { total: 0, match: 0 }
+                return { total: 0, match: 0 };
             }
         );
     };
@@ -243,7 +243,7 @@ function show_percent_that_are_in_each_race(ndx) {
         .stack(mastersDegreeProfByRace, "master's degree")
         .valueAccessor(function(d) {
             if (d.value.total > 0) {
-                return (d.value.match / d.value.total) * 100
+                return (d.value.match / d.value.total) * 100;
             }
             else {
                 return 0;
@@ -407,7 +407,7 @@ function show_math_scores_by_test_prep(ndx) {
         .elasticY(true)
         .xAxisLabel("Test Prep Course")
         .yAxisLabel("Average Math Score")
-        .yAxis().ticks(10)
+        .yAxis().ticks(10);
 }
 
 /*Line Graph for reading scores by test prep*/
